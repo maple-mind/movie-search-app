@@ -13,7 +13,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "映画検索アプリ",
+  title: {
+		default: "映画検索アプリ",
+		template: "%s | 映画検索アプリ",
+	},
 	description: "TMDB APIを使った映画検索アプリ",
 };
 
