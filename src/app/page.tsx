@@ -1,12 +1,12 @@
 import Link from "next/link";
-import SearchBox from "@/components/SearchBox";
+import MovieSearch from "@/components/MovieSearch";
 
 export default function Home() {
 	return (
 		<main className="mx-auto max-w-3xl p-8">
 			<h1 className="text-2xl font-bold">映画検索アプリ</h1>
 			<div className="mt-4">
-				<SearchBox />
+				<MovieSearch />
 			</div>
 			<Link
 				href="/movies"
