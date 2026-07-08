@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
 import type { MovieSummary } from "@/lib/movie";
 import { useDebounce } from "@/hooks/useDebounce";
+import Image from "next/image";
 
 async function fetchSearch(query: string): Promise<MovieSummary[]> {
 	const res = await fetch(`/api/search?query=${encodeURIComponent(query)}`);
@@ -43,14 +44,27 @@ export default function MovieSearch() {
 					<p>該当する映画が見つかりませんでした。</p>
 				)}
 				{data && data.length > 0 && (
-					<ul className="space-y-2">
+					<ul className="space-y-3">
 						{data.map((movie) => (
 							<li key={movie.id}>
 								<Link
 									href={`/movies/${movie.id}`}
-									className="text-blue-600 underline"
+									className="flex items-center gap-3 rounded p-2 hover:bg-gray-50"
 								>
-									{movie.title}
+									{movie.poster_path ? (
+										<Image
+											src={`https://image.tmdb.org/t/p/w154${movie.poster_path}`}
+											alt={`${movie.title}のポスター`}
+											width={60}
+											height={90}
+											className="rounded"
+										/>
+									) : (
+										<div className="flex h-[90px] w-[60px] items-center justify-center rounded bg-gray-100 text-xs text-gray-400">
+											No Image
+										</div>
+									)}
+									<span className="text-blue-600 underline">{movie.title}</span>
 								</Link>
 							</li>
 						))}

@@ -11,6 +11,7 @@ export type Movie = z.infer<typeof movieSchema>;
 const movieSummarySchema = z.object({
 	id: z.number(),
 	title: z.string(),
+	poster_path: z.string().nullable(),
 });
 
 const searchResponseSchema = z.object({
