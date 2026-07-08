@@ -4,6 +4,7 @@ const movieSchema = z.object({
 	title: z.string(),
 	overview: z.string(),
 	release_date: z.string(),
+	poster_path: z.string().nullable(),
 });
 
 export type Movie = z.infer<typeof movieSchema>;

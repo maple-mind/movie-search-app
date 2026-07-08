@@ -57,7 +57,7 @@ export default function MovieSearch() {
 											alt={`${movie.title}のポスター`}
 											width={60}
 											height={90}
-											className="rounded"
+											className="rounded h-auto"
 										/>
 									) : (
 										<div className="flex h-[90px] w-[60px] items-center justify-center rounded bg-gray-100 text-xs text-gray-400">
