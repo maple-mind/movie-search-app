@@ -9,18 +9,6 @@ const movieSchema = z.object({
 
 export type Movie = z.infer<typeof movieSchema>;
 
-const movieSummarySchema = z.object({
-	id: z.number(),
-	title: z.string(),
-	poster_path: z.string().nullable(),
-});
-
-const searchResponseSchema = z.object({
-	results: z.array(movieSummarySchema),
-});
-
-export type MovieSummary = z.infer<typeof movieSummarySchema>;
-
 export async function getMovie(id: string): Promise<Movie | null> {
 	const res = await fetch(
 		`https://api.themoviedb.org/3/movie/${id}?language=ja-JP`,
@@ -49,9 +37,32 @@ export async function getMovie(id: string): Promise<Movie | null> {
 	return result.data;
 }
 
-export async function searchMovies(query: string): Promise<MovieSummary[]> {
+
+const movieSummarySchema = z.object({
+	id: z.number(),
+	title: z.string(),
+	poster_path: z.string().nullable(),
+});
+
+const searchResponseSchema = z.object({
+	page: z.number(),
+	total_pages: z.number(),
+	results: z.array(movieSummarySchema),
+});
+
+export type MovieSummary = z.infer<typeof movieSummarySchema>;
+
+export type SearchResult = {
+	results: MovieSummary[];
+	totalPages: number;
+};
+
+export async function searchMovies(
+	query: string,
+	page: number,
+): Promise<SearchResult> {
 	const res = await fetch(
-		`https://api.themoviedb.org/3/search/movie?query=${encodeURIComponent(query)}&language=ja-JP`,
+		`https://api.themoviedb.org/3/search/movie?query=${encodeURIComponent(query)}&language=ja-JP&page=${page}`,
 		{
 			headers: {
 				Authorization: `Bearer ${process.env.TMDB_ACCESS_TOKEN}`,
@@ -70,5 +81,8 @@ export async function searchMovies(query: string): Promise<MovieSummary[]> {
 		throw new Error("検索結果の形式が想定と異なります");
 	}
 
-	return result.data.results;
+	return {
+		results: result.data.results,
+		totalPages: result.data.total_pages,
+	}
 }
