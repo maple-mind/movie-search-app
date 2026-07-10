@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Image from "next/image";
 import { getMovie } from "@/lib/movie";
+import FavoriteButton from "@/components/FavoriteButton";
 
 export async function generateMetadata({
 	params,
@@ -48,6 +49,14 @@ export default async function MovieDetailPage({
 					priority
 				/>
 			)}
+
+			<FavoriteButton
+				movie={{
+					id: Number(id),
+					title: movie.title,
+					poster_path: movie.poster_path,
+				}}
+			/>
 
 			<p className="mt-4 leading-relaxed">{movie.overview}</p>
 		</main>
