@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { getMovie } from "@/lib/movie";
 import FavoriteButton from "@/components/FavoriteButton";
+import RecommendButton from "@/components/RecommendButton";
 
 export async function generateMetadata({
 	params,
@@ -59,6 +60,8 @@ export default async function MovieDetailPage({
 			/>
 
 			<p className="mt-4 leading-relaxed">{movie.overview}</p>
+
+			<RecommendButton title={movie.title} overview={movie.overview} />
 		</main>
 	);
 }

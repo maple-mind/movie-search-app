@@ -20,16 +20,16 @@ export default function RootLayout({
     <html lang="ja">
       <body>
         <Providers>
-					<header className="border-b border-gray-200">
-						<nav className="mx-auto flex max-w-3xl gap-4 p-4">
-							<Link href="/" className="font-bold">
-								映画検索
-							</Link>
-							<Link href="/favorites">お気に入り</Link>
-						</nav>
-					</header>
-					{children}
-				</Providers>
+			<header className="border-b border-gray-200">
+				<nav className="mx-auto flex max-w-3xl gap-4 p-4">
+					<Link href="/" className="font-bold">
+						映画検索
+					</Link>
+					<Link href="/favorites">お気に入り</Link>
+				</nav>
+			</header>
+			{children}
+		</Providers>
       </body>
     </html>
   );
