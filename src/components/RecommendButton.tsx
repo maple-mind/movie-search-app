@@ -32,22 +32,28 @@ export default function RecommendButton({
 	});
 
 	return (
-		<section className="mt-6 rounded border border-gray-200 p-4">
-			<h2 className="font-bold">AIによる紹介</h2>
+		<section className="mt-6 rounded-xl border border-gray-200 bg-gray-50 p-5">
+			<div className="flex items-center justify-between gap-4">
+				<h2 className="font-bold text-gray-900">AIによる紹介</h2>
 
-			<button
-				onClick={() => mutate()}
-				disabled={isPending}
-				className="mt-2 rounded bg-blue-600 px-4 py-2 text-white disabled:opacity-40"
-			>
-				{isPending ? "生成中..." : "AIに紹介文を書いてもらう"}
-			</button>
+				<button
+					onClick={() => mutate()}
+					disabled={isPending}
+					className="inline-flex items-center gap-2 rounded-full bg-blue-600 px-5 py-2.5 text-sm font-bold text-white transition-colors hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-40"
+				>
+					{isPending ? "生成中..." : "AIに書いてもらう"}
+				</button>
+			</div>
 
-			<div className="mt-3" aria-live="polite" aria-busy={isPending}>
+			<div className="mt-4" aria-live="polite" aria-busy={isPending}>
 				{isError && (
-					<p role="alert">紹介文の生成に失敗しました。</p>
+					<p role="alert" className="text-sm text-red-600">
+						紹介文の生成に失敗しました。もう一度お試しください。
+					</p>
 				)}
-				{data && <p className="leading-relaxed">{data}</p>}
+				{data && (
+					<p className="leading-relaxed text-gray-700">{data}</p>
+				)}
 			</div>
 		</section>
 	);
