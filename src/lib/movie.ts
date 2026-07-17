@@ -71,6 +71,7 @@ export async function searchMovies(
 			headers: {
 				Authorization: `Bearer ${process.env.TMDB_ACCESS_TOKEN}`,
 			},
+			cache: "no-store",
 		},
 	);
 
