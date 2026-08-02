@@ -56,6 +56,7 @@ TMDB API を利用した映画の検索・詳細閲覧・お気に入り管理�
 
 ローカルで動かす場合、`.env.local` に以下が必要です。
 
+```
 TMDB_ACCESS_TOKEN   # TMDB の Read Access Token
 OPENAI_API_KEY      # OpenAI の API キー
 OPENAI_MODEL        # 使用するモデル名
