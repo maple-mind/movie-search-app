@@ -2,7 +2,7 @@
 
 TMDB API を利用した映画の検索・詳細閲覧・お気に入り管理に加え、OpenAI API による作品紹介文の自動生成を実装した Webアプリケーションです。
 
-🔗 **デモ**: （デプロイ後にURLを記入）
+🔗 **デモ**: https://movie-search-app-omega-livid.vercel.app/
 
 📁 **リポジトリ**: https://github.com/maple-mind/movie-search-app
 
