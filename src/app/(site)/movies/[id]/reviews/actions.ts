@@ -1,7 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { createReview } from "@/lib/review";
+import { createReview, deleteReview } from "@/lib/review";
 
 export type ReviewFormState =
 	| { status: "idle" }
@@ -39,4 +39,13 @@ export async function submitReview(
 	revalidatePath(`/movies/${movieId}/reviews`);
 
 	return { status: "success" };
+}
+
+export async function removeReview(formData: FormData) {
+	const id = String(formData.get("id") ?? "");
+	const movieId = Number(formData.get("movieId"));
+
+	await deleteReview(id);
+
+	revalidatePath(`/movies/${movieId}/reviews`);
 }
