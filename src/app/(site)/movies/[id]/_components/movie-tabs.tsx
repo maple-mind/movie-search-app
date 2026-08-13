@@ -7,6 +7,7 @@ const TABS = [
 	{ segment: "", label: "概要" },
 	{ segment: "credits", label: "キャスト" },
 	{ segment: "similar", label: "類似作品" },
+	{ segment: "reviews", label: "レビュー" },
 ] as const;
 
 export function MovieTabs({ id }: { id: string }) {
