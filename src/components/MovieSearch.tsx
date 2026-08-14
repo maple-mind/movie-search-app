@@ -7,12 +7,10 @@ import Image from "next/image";
 import type { MovieSummary, SearchResult } from "@/lib/movie";
 import { useDebounce } from "@/hooks/useDebounce";
 
-
-async function fetchSearch(
-	query: string,
-	page: number,
-): Promise<SearchResult> {
-	const res = await fetch(`/api/search?query=${encodeURIComponent(query)}&page=${page}`);
+async function fetchSearch(query: string, page: number): Promise<SearchResult> {
+	const res = await fetch(
+		`/api/search?query=${encodeURIComponent(query)}&page=${page}`,
+	);
 	if (!res.ok) {
 		throw new Error("検索に失敗しました");
 	}
@@ -69,14 +67,16 @@ export default function MovieSearch() {
 												alt={`${movie.title}のポスター`}
 												width={60}
 												height={90}
-												className="rounded h-auto"
+												className="h-auto rounded"
 											/>
 										) : (
 											<div className="flex h-[90px] w-[60px] items-center justify-center rounded bg-gray-100 text-xs text-gray-400">
 												No Image
 											</div>
 										)}
-										<span className="text-blue-600 underline">{movie.title}</span>
+										<span className="text-blue-600 underline">
+											{movie.title}
+										</span>
 									</Link>
 								</li>
 							))}

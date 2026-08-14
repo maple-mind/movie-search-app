@@ -36,8 +36,7 @@ export async function getReviews(movieId: number) {
 // ===== 作成 =====
 
 type CreateReviewResult =
-	| { success: true }
-	| { success: false; errors: Record<string, string[]> };
+	{ success: true } | { success: false; errors: Record<string, string[]> };
 
 export async function createReview(
 	input: unknown,

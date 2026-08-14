@@ -39,7 +39,6 @@ export async function getMovie(id: string): Promise<Movie | null> {
 	return result.data;
 }
 
-
 // ===== 検索 =====
 
 const movieSummarySchema = z.object({
@@ -89,9 +88,8 @@ export async function searchMovies(
 	return {
 		results: result.data.results,
 		totalPages: result.data.total_pages,
-	}
+	};
 }
-
 
 // ===== キャスト（出演者） =====
 
@@ -132,7 +130,6 @@ export async function getMovieCredits(id: string): Promise<CastMember[]> {
 
 	return result.data.cast;
 }
-
 
 // ===== 類似作品 =====
 

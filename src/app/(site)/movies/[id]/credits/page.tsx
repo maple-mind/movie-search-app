@@ -36,9 +36,7 @@ export default async function MovieCreditsPage({
 					)}
 					<div className="min-w-0">
 						<p className="truncate text-sm font-bold">{member.name}</p>
-						<p className="truncate text-xs text-gray-500">
-							{member.character}
-						</p>
+						<p className="truncate text-xs text-gray-500">{member.character}</p>
 					</div>
 				</li>
 			))}

@@ -51,9 +51,7 @@ export default function RecommendButton({
 						紹介文の生成に失敗しました。もう一度お試しください。
 					</p>
 				)}
-				{data && (
-					<p className="leading-relaxed text-gray-700">{data}</p>
-				)}
+				{data && <p className="leading-relaxed text-gray-700">{data}</p>}
 			</div>
 		</section>
 	);

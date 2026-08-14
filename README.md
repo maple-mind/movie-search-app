@@ -13,18 +13,18 @@ TMDB API を利用した映画の検索・詳細閲覧・お気に入り管理�
 
 ## 使用技術
 
-| 分類 | 技術 |
-|---|---|
-| フレームワーク | Next.js 16（App Router） |
-| 言語 | TypeScript |
-| UI | React 19 / Tailwind CSS |
-| データ取得・状態管理 | TanStack Query v5 |
-| バリデーション | Zod |
-| 外部API | TMDB API / OpenAI API（Responses API） |
-| データベース | Neon（PostgreSQL） |
-| ORM | Prisma 7 |
-| 書き込み処理 | Server Actions |
-| デプロイ | Vercel |
+| 分類                 | 技術                                   |
+| -------------------- | -------------------------------------- |
+| フレームワーク       | Next.js 16（App Router）               |
+| 言語                 | TypeScript                             |
+| UI                   | React 19 / Tailwind CSS                |
+| データ取得・状態管理 | TanStack Query v5                      |
+| バリデーション       | Zod                                    |
+| 外部API              | TMDB API / OpenAI API（Responses API） |
+| データベース         | Neon（PostgreSQL）                     |
+| ORM                  | Prisma 7                               |
+| 書き込み処理         | Server Actions                         |
+| デプロイ             | Vercel                                 |
 
 ---
 

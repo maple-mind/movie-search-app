@@ -45,7 +45,7 @@ export function ReviewList({
 							<span className="ml-1">{review.rating} / 5</span>
 						</p>
 					</div>
-					<p className="mt-2 whitespace-pre-wrap text-sm">{review.content}</p>
+					<p className="mt-2 text-sm whitespace-pre-wrap">{review.content}</p>
 					<div className="mt-2 flex items-center justify-between">
 						<time
 							dateTime={review.createdAt.toISOString()}

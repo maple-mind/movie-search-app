@@ -7,10 +7,10 @@ export type ReviewFormState =
 	| { status: "idle" }
 	| { status: "success" }
 	| {
-        status: "error";
-        errors: Record<string, string[]>;
-        values: { author: string; rating: string; content: string };
-    };
+			status: "error";
+			errors: Record<string, string[]>;
+			values: { author: string; rating: string; content: string };
+	  };
 
 export async function submitReview(
 	_prevState: ReviewFormState,

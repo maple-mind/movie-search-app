@@ -7,10 +7,7 @@ export default function NotFound() {
 			<p className="mt-2 text-gray-600">
 				お探しの映画は存在しないか、削除された可能性があります。
 			</p>
-			<Link
-				href="/"
-				className="mt-4 inline-block text-blue-600 underline"
-			>
+			<Link href="/" className="mt-4 inline-block text-blue-600 underline">
 				トップページへ戻る
 			</Link>
 		</main>

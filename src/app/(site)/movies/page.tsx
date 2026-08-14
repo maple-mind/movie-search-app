@@ -9,10 +9,7 @@ export default function MoviesPage() {
 			<ul className="mt-4 space-y-2">
 				{dummyMovieIds.map((id) => (
 					<li key={id}>
-						<Link
-							href={`/movies/${id}`}
-							className="text-blue-600 underline"
-						>
+						<Link href={`/movies/${id}`} className="text-blue-600 underline">
 							映画 {id} の詳細へ
 						</Link>
 					</li>

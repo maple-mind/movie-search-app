@@ -11,13 +11,17 @@ export function ReviewForm({ movieId }: { movieId: number }) {
 		initialState,
 	);
 
-  const errors = state.status === "error" ? state.errors : undefined;
-  const values = state.status === "error" ? state.values : undefined;
+	const errors = state.status === "error" ? state.errors : undefined;
+	const values = state.status === "error" ? state.values : undefined;
 
 	return (
-	  // React 19.2.4 時点では自動フォームリセット時に select の defaultValue が復元されない（react#30580）
+		// React 19.2.4 時点では自動フォームリセット時に select の defaultValue が復元されない（react#30580）
 		// 要素ごとの差異を避けるため、フォーム全体を再マウントして入力値を復元する
-		<form key={state.status === "error" ? JSON.stringify(values) : "initial"} action={formAction} className="mb-8 space-y-4">
+		<form
+			key={state.status === "error" ? JSON.stringify(values) : "initial"}
+			action={formAction}
+			className="mb-8 space-y-4"
+		>
 			<input type="hidden" name="movieId" value={movieId} />
 
 			<div>
@@ -29,13 +33,11 @@ export function ReviewForm({ movieId }: { movieId: number }) {
 					name="author"
 					type="text"
 					maxLength={20}
-          defaultValue={values?.author ?? ""}
+					defaultValue={values?.author ?? ""}
 					className="mt-1 w-full rounded border border-gray-300 px-3 py-2"
 				/>
 				{errors?.author && (
-					<p className="mt-1 text-sm text-red-600">
-						{errors.author[0]}
-					</p>
+					<p className="mt-1 text-sm text-red-600">{errors.author[0]}</p>
 				)}
 			</div>
 
@@ -44,20 +46,20 @@ export function ReviewForm({ movieId }: { movieId: number }) {
 					評価
 				</label>
 				<select
-           id="rating"
-           name="rating"
-           defaultValue={values?.rating ?? ""}
-           className="mt-1 rounded border border-gray-300 px-3 py-2"
-         >
-           <option value="">選択してください</option>
-             {[5, 4, 3, 2, 1].map((value) => (
-                <option key={value} value={String(value)}>{value}</option>
-             ))}
-        </select>
+					id="rating"
+					name="rating"
+					defaultValue={values?.rating ?? ""}
+					className="mt-1 rounded border border-gray-300 px-3 py-2"
+				>
+					<option value="">選択してください</option>
+					{[5, 4, 3, 2, 1].map((value) => (
+						<option key={value} value={String(value)}>
+							{value}
+						</option>
+					))}
+				</select>
 				{errors?.rating && (
-					<p className="mt-1 text-sm text-red-600">
-						{errors.rating[0]}
-					</p>
+					<p className="mt-1 text-sm text-red-600">{errors.rating[0]}</p>
 				)}
 			</div>
 
@@ -70,13 +72,11 @@ export function ReviewForm({ movieId }: { movieId: number }) {
 					name="content"
 					rows={4}
 					maxLength={500}
-          defaultValue={values?.content ?? ""}
+					defaultValue={values?.content ?? ""}
 					className="mt-1 w-full rounded border border-gray-300 px-3 py-2"
 				/>
 				{errors?.content && (
-					<p className="mt-1 text-sm text-red-600">
-						{errors.content[0]}
-					</p>
+					<p className="mt-1 text-sm text-red-600">{errors.content[0]}</p>
 				)}
 			</div>
 
