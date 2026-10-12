@@ -7,11 +7,11 @@ export const metadata: Metadata = {
 
 export default function FavoritesPage() {
 	return (
-		<main className="mx-auto max-w-3xl p-8">
+		<div className="mx-auto max-w-3xl p-8">
 			<h1 className="text-2xl font-bold">お気に入り</h1>
 			<div className="mt-4">
 				<FavoritesList />
 			</div>
-		</main>
+		</div>
 	);
 }

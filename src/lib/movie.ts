@@ -161,3 +161,34 @@ export async function getSimilarMovies(id: string): Promise<MovieSummary[]> {
 
 	return result.data.results;
 }
+
+// ===== 日本で上映中 =====
+
+const nowPlayingResponseSchema = z.object({
+	results: z.array(movieSummarySchema),
+});
+
+export async function getNowPlayingMovies(): Promise<MovieSummary[]> {
+	const res = await fetch(
+		"https://api.themoviedb.org/3/movie/now_playing?language=ja-JP&region=JP",
+		{
+			headers: {
+				Authorization: `Bearer ${process.env.TMDB_ACCESS_TOKEN}`,
+			},
+			next: { revalidate: 3600 },
+		},
+	);
+
+	if (!res.ok) {
+		throw new Error("上映中作品の取得に失敗しました");
+	}
+
+	const json = await res.json();
+	const result = nowPlayingResponseSchema.safeParse(json);
+
+	if (!result.success) {
+		throw new Error("上映中作品の形式が想定と異なります");
+	}
+
+	return result.data.results;
+}

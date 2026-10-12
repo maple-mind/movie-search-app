@@ -40,7 +40,7 @@ export default function MovieSearch() {
 				}}
 				placeholder="映画タイトルを入力"
 				aria-label="映画を検索"
-				className="w-full rounded border border-gray-300 px-3 py-2"
+				className="w-full rounded-lg border border-gray-300 px-4 py-3 text-lg"
 			/>
 
 			<div className="mt-4" aria-live="polite" aria-busy={isLoading}>

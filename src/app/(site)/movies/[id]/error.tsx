@@ -8,7 +8,7 @@ export default function Error({
 	reset: () => void;
 }) {
 	return (
-		<main className="mx-auto max-w-3xl p-8">
+		<div>
 			<p role="alert">エラーが発生しました。</p>
 			<button
 				onClick={() => reset()}
@@ -16,6 +16,6 @@ export default function Error({
 			>
 				再試行
 			</button>
-		</main>
+		</div>
 	);
 }

@@ -17,14 +17,6 @@ export default function SiteLayout({
 						<ul className="flex items-center gap-4">
 							<li>
 								<Link
-									href="/"
-									className="text-sm text-gray-600 hover:text-gray-900"
-								>
-									検索
-								</Link>
-							</li>
-							<li>
-								<Link
 									href="/favorites"
 									className="text-sm text-gray-600 hover:text-gray-900"
 								>
@@ -40,7 +32,7 @@ export default function SiteLayout({
 
 			<footer className="border-t border-gray-200">
 				<div className="mx-auto max-w-5xl px-4 py-6">
-					<p className="text-xs text-gray-500">
+					<p className="text-center text-xs text-gray-500">
 						This product uses the TMDB API but is not endorsed or certified by
 						TMDB.
 					</p>
