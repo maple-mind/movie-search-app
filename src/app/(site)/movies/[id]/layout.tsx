@@ -38,7 +38,7 @@ export default async function MovieLayout({
 
 	return (
 		<div className="mx-auto max-w-3xl p-8">
-			<div className="flex flex-col gap-6 sm:flex-row">
+			<div className="flex flex-col items-center gap-6 sm:flex-row sm:items-start">
 				{movie.poster_path && (
 					<Image
 						src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
@@ -50,7 +50,7 @@ export default async function MovieLayout({
 					/>
 				)}
 
-				<div>
+				<div className="text-center sm:text-left">
 					<h1 className="text-2xl font-bold">{movie.title}</h1>
 					<p className="mt-1 text-gray-600">公開日: {movie.release_date}</p>
 				</div>
