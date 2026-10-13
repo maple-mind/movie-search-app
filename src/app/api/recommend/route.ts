@@ -1,14 +1,16 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { z } from "zod";
+import { getMovie } from "@/lib/movie";
 import { generateRecommendation } from "@/lib/openai";
 
+// 任意の文章を OpenAI に渡せないよう、受け取るのは映画 ID のみとし、
+// タイトルとあらすじはサーバー側で TMDB から取得する
 const requestSchema = z.object({
-	title: z.string().min(1),
-	overview: z.string().trim().min(1),
+	movieId: z.number().int().positive(),
 });
 
 export async function POST(request: NextRequest) {
-	const body = await request.json();
+	const body = await request.json().catch(() => null);
 	const parsed = requestSchema.safeParse(body);
 
 	if (!parsed.success) {
@@ -19,9 +21,26 @@ export async function POST(request: NextRequest) {
 	}
 
 	try {
+		const movie = await getMovie(String(parsed.data.movieId));
+
+		if (!movie) {
+			return NextResponse.json(
+				{ error: "映画が見つかりません" },
+				{ status: 404 },
+			);
+		}
+
+		// あらすじがないと AI が内容を推測で書いてしまうため、生成させない
+		if (!movie.overview.trim()) {
+			return NextResponse.json(
+				{ error: "あらすじが登録されていない作品です" },
+				{ status: 422 },
+			);
+		}
+
 		const recommendation = await generateRecommendation(
-			parsed.data.title,
-			parsed.data.overview,
+			movie.title,
+			movie.overview,
 		);
 		return NextResponse.json({ recommendation });
 	} catch {

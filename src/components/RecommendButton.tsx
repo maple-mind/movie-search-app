@@ -3,14 +3,11 @@
 import { useQuery } from "@tanstack/react-query";
 import type { Recommendation } from "@/lib/openai";
 
-async function fetchRecommendation(
-	title: string,
-	overview: string,
-): Promise<Recommendation> {
+async function fetchRecommendation(movieId: number): Promise<Recommendation> {
 	const res = await fetch("/api/recommend", {
 		method: "POST",
 		headers: { "Content-Type": "application/json" },
-		body: JSON.stringify({ title, overview }),
+		body: JSON.stringify({ movieId }),
 	});
 
 	if (!res.ok) {
@@ -23,25 +20,23 @@ async function fetchRecommendation(
 
 export default function RecommendButton({
 	movieId,
-	title,
-	overview,
+	hasOverview,
 }: {
 	movieId: number;
-	title: string;
-	overview: string;
+	hasOverview: boolean;
 }) {
 	// タブ移動でアンマウントされても結果を残すため、Query のキャッシュに保持する。
 	// 従量課金のため自動取得はせず、ボタン押下時の refetch でのみ生成する。
 	const { refetch, data, isFetching, isError } = useQuery({
 		queryKey: ["recommendation", movieId],
-		queryFn: () => fetchRecommendation(title, overview),
+		queryFn: () => fetchRecommendation(movieId),
 		enabled: false,
 		retry: false,
 		gcTime: 30 * 60 * 1000,
 	});
 
-	// あらすじがないと AI が内容を推測で書いてしまうため、生成させない
-	if (!overview.trim()) {
+	// あらすじがない作品は API 側でも拒否されるため、ボタン自体を出さない
+	if (!hasOverview) {
 		return (
 			<section className="mt-6 rounded-xl border border-gray-200 bg-gray-50 p-5">
 				<h2 className="font-bold text-gray-900">AIおすすめ紹介</h2>

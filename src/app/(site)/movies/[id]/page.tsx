@@ -35,8 +35,7 @@ export default async function MovieOverviewPage({
 
 			<RecommendButton
 				movieId={Number(id)}
-				title={movie.title}
-				overview={movie.overview}
+				hasOverview={movie.overview.trim() !== ""}
 			/>
 		</div>
 	);
