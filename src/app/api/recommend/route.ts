@@ -4,7 +4,7 @@ import { generateRecommendation } from "@/lib/openai";
 
 const requestSchema = z.object({
 	title: z.string().min(1),
-	overview: z.string().min(1),
+	overview: z.string().trim().min(1),
 });
 
 export async function POST(request: NextRequest) {

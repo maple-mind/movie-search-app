@@ -17,7 +17,11 @@ export default async function MovieOverviewPage({
 
 	return (
 		<div>
-			<p className="leading-relaxed text-gray-700">{movie.overview}</p>
+			{movie.overview.trim() ? (
+				<p className="leading-relaxed text-gray-700">{movie.overview}</p>
+			) : (
+				<p className="text-gray-500">あらすじは登録されていません。</p>
+			)}
 
 			<div className="mt-6">
 				<FavoriteButton
@@ -29,7 +33,11 @@ export default async function MovieOverviewPage({
 				/>
 			</div>
 
-			<RecommendButton title={movie.title} overview={movie.overview} />
+			<RecommendButton
+				movieId={Number(id)}
+				title={movie.title}
+				overview={movie.overview}
+			/>
 		</div>
 	);
 }
