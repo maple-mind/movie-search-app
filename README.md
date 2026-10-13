@@ -5,8 +5,8 @@ TMDB API を利用した映画の検索・詳細閲覧・お気に入り管理�
 🔗 **デモ**: https://movie-search-app-omega-livid.vercel.app/
 
 <p>
-  <img src="./docs/screenshot-top.jpg" alt="トップページ（上映中の作品一覧）" width="300">
-  <img src="./docs/screenshot-detail.jpg" alt="映画詳細ページ（AIおすすめ紹介）" width="300">
+  <img src="./docs/screenshot-top.jpg" alt="トップページ（上映中の作品一覧）" width="300" align="top">
+  <img src="./docs/screenshot-detail.jpg" alt="映画詳細ページ（AIおすすめ紹介）" width="300" align="top">
 </p>
 
 ---
